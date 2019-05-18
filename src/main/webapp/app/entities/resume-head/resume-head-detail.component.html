@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="resumeHead">
+            <h2><span>Resume Head</span> {{resumeHead.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span ngbTooltip="商品名称ID">Name</span></dt>
+                <dd>
+                    <span>{{resumeHead.name}}</span>
+                </dd>
+                <dt><span ngbTooltip="商品名称ID">Mobile</span></dt>
+                <dd>
+                    <span>{{resumeHead.mobile}}</span>
+                </dd>
+                <dt><span ngbTooltip="电子邮件D">Email</span></dt>
+                <dd>
+                    <span>{{resumeHead.email}}</span>
+                </dd>
+                <dt><span ngbTooltip="年龄">Age</span></dt>
+                <dd>
+                    <span>{{resumeHead.age}}</span>
+                </dd>
+                <dt><span ngbTooltip="相片">Photo</span></dt>
+                <dd>
+                    <span>{{resumeHead.photo}}</span>
+                </dd>
+                <dt><span ngbTooltip="居住地">Residence</span></dt>
+                <dd>
+                    <span>{{resumeHead.residence}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/resume-head', resumeHead.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

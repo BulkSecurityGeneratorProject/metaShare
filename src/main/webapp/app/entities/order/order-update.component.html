@@ -1,0 +1,169 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-order-heading">Create or edit a Order</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!order.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_orderCode" ngbTooltip="订单编号">Order Code</label>
+                    <input type="text" class="form-control" name="orderCode" id="field_orderCode"
+                           formControlName="orderCode"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_goodsName" ngbTooltip="商品名称">Goods Name</label>
+                    <input type="text" class="form-control" name="goodsName" id="field_goodsName"
+                           formControlName="goodsName"/>
+                    <div *ngIf="editForm.get('goodsName').invalid && (editForm.get('goodsName').dirty || editForm.get('goodsName').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('goodsName').errors.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_quantity" ngbTooltip="数量ID">Quantity</label>
+                    <input type="number" class="form-control" name="quantity" id="field_quantity"
+                           formControlName="quantity"/>
+                    <div *ngIf="editForm.get('quantity').invalid && (editForm.get('quantity').dirty || editForm.get('quantity').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('quantity').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('quantity')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_subtotalAmount" ngbTooltip="小计">Subtotal Amount</label>
+                    <input type="number" class="form-control" name="subtotalAmount" id="field_subtotalAmount"
+                           formControlName="subtotalAmount"/>
+                    <div *ngIf="editForm.get('subtotalAmount').invalid && (editForm.get('subtotalAmount').dirty || editForm.get('subtotalAmount').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('subtotalAmount').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('subtotalAmount')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_price" ngbTooltip="单价">Price</label>
+                    <input type="number" class="form-control" name="price" id="field_price"
+                           formControlName="price"/>
+                    <div *ngIf="editForm.get('price').invalid && (editForm.get('price').dirty || editForm.get('price').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('price').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('price')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_taxTotalAmount" ngbTooltip="税款小计">Tax Total Amount</label>
+                    <input type="number" class="form-control" name="taxTotalAmount" id="field_taxTotalAmount"
+                           formControlName="taxTotalAmount"/>
+                    <div *ngIf="editForm.get('taxTotalAmount').invalid && (editForm.get('taxTotalAmount').dirty || editForm.get('taxTotalAmount').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('taxTotalAmount').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('taxTotalAmount')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_taxTate" ngbTooltip="税率">Tax Tate</label>
+                    <input type="number" class="form-control" name="taxTate" id="field_taxTate"
+                           formControlName="taxTate"/>
+                    <div *ngIf="editForm.get('taxTate').invalid && (editForm.get('taxTate').dirty || editForm.get('taxTate').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('taxTate').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('taxTate')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_sumAmount" ngbTooltip="总计">Sum Amount</label>
+                    <input type="number" class="form-control" name="sumAmount" id="field_sumAmount"
+                           formControlName="sumAmount"/>
+                    <div *ngIf="editForm.get('sumAmount').invalid && (editForm.get('sumAmount').dirty || editForm.get('sumAmount').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('sumAmount').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('sumAmount')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createBy">Create By</label>
+                    <input type="number" class="form-control" name="createBy" id="field_createBy"
+                           formControlName="createBy"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createTime">Create Time</label>
+                    <div class="d-flex">
+                        <input id="field_createTime" type="datetime-local" class="form-control" name="createTime" formControlName="createTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updateby">Updateby</label>
+                    <input type="number" class="form-control" name="updateby" id="field_updateby"
+                           formControlName="updateby"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updateTime">Update Time</label>
+                    <div class="d-flex">
+                        <input id="field_updateTime" type="datetime-local" class="form-control" name="updateTime" formControlName="updateTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_version">Version</label>
+                    <input type="number" class="form-control" name="version" id="field_version"
+                           formControlName="version"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_status" ngbTooltip="状态">Status</label>
+                    <input type="number" class="form-control" name="status" id="field_status"
+                           formControlName="status"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_goods">Goods</label>
+                    <select class="form-control" id="field_goods" name="goods" formControlName="goods">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="goodsOption.id === editForm.get('goods').value?.id ? editForm.get('goods').value : goodsOption" *ngFor="let goodsOption of goods; trackBy: trackGoodsById">{{goodsOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="order">
+            <h2><span>Order</span> {{order.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span ngbTooltip="订单编号">Order Code</span></dt>
+                <dd>
+                    <span>{{order.orderCode}}</span>
+                </dd>
+                <dt><span ngbTooltip="商品名称">Goods Name</span></dt>
+                <dd>
+                    <span>{{order.goodsName}}</span>
+                </dd>
+                <dt><span ngbTooltip="数量ID">Quantity</span></dt>
+                <dd>
+                    <span>{{order.quantity}}</span>
+                </dd>
+                <dt><span ngbTooltip="小计">Subtotal Amount</span></dt>
+                <dd>
+                    <span>{{order.subtotalAmount}}</span>
+                </dd>
+                <dt><span ngbTooltip="单价">Price</span></dt>
+                <dd>
+                    <span>{{order.price}}</span>
+                </dd>
+                <dt><span ngbTooltip="税款小计">Tax Total Amount</span></dt>
+                <dd>
+                    <span>{{order.taxTotalAmount}}</span>
+                </dd>
+                <dt><span ngbTooltip="税率">Tax Tate</span></dt>
+                <dd>
+                    <span>{{order.taxTate}}</span>
+                </dd>
+                <dt><span ngbTooltip="总计">Sum Amount</span></dt>
+                <dd>
+                    <span>{{order.sumAmount}}</span>
+                </dd>
+                <dt><span>Create By</span></dt>
+                <dd>
+                    <span>{{order.createBy}}</span>
+                </dd>
+                <dt><span>Create Time</span></dt>
+                <dd>
+                    <span>{{order.createTime}}</span>
+                </dd>
+                <dt><span>Updateby</span></dt>
+                <dd>
+                    <span>{{order.updateby}}</span>
+                </dd>
+                <dt><span>Update Time</span></dt>
+                <dd>
+                    <span>{{order.updateTime}}</span>
+                </dd>
+                <dt><span>Version</span></dt>
+                <dd>
+                    <span>{{order.version}}</span>
+                </dd>
+                <dt><span ngbTooltip="状态">Status</span></dt>
+                <dd>
+                    <span>{{order.status}}</span>
+                </dd>
+                <dt><span>Goods</span></dt>
+                <dd>
+                    <div *ngIf="order.goods">
+                        <a [routerLink]="['/goods', order.goods?.id, 'view']">{{order.goods?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/order', order.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

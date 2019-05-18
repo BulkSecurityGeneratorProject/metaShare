@@ -1,0 +1,72 @@
+
+entity ResumeHead {
+	name   String required   minlength(0) maxlength(32) 	/** 商品名称ID */
+	mobile String required  minlength(0) maxlength(16)     /** 商品名称ID */
+    email  String required  minlength(0) maxlength(32)     /** 电子邮件D */
+    age    Integer required /** 年龄 */
+    photo  String           /** 相片 */
+    residence String required  minlength(0) maxlength(256) /** 居住地 */
+}
+
+
+service  ResumeHead with serviceClass
+service  ResumeHead with serviceImpl
+paginate ResumeHead with pager
+
+
+
+entity Tax {
+	provinceCode String   required  minlength(0) maxlength(8) /** 居住地 */
+	name Integer
+    rate BigDecimal      /** 税率 */
+
+}
+
+service  Tax with serviceClass
+service  Tax with serviceImpl
+paginate Tax with pager
+
+
+entity Goods {
+    goodsId	Long  required  /** 商品名称ID */
+	name String   minlength(0) maxlength(255) /** 商品名称 */
+    provinceCode String minlength(0) maxlength(6) /** 区域编码 */
+    rate BigDecimal      /** 税率 */
+    status Integer        /** 状态 */
+    stack Integer     required   /** 库存 */
+    price BigDecimal  required    /** 单价 */
+}
+
+service  Goods with serviceClass
+service  Goods with serviceImpl
+paginate Goods with pager
+
+
+relationship ManyToOne {
+	Goods{tax} to Tax
+}
+entity Order {
+  goodsId		Long required 	/** 商品ID */
+  orderCode     String        	/** 订单编号 */
+  goodsName	    String required  	 /** 商品名称 */
+  quantity		Integer required		 /** 数量ID */
+  subtotalAmount BigDecimal	required         /** 小计 */
+  price			 BigDecimal	required	 /** 单价 */
+  taxTotalAmount BigDecimal required       /** 税款小计 */
+  taxTate		 BigDecimal	required         /** 税率 */
+  sumAmount		 BigDecimal required         /** 总计 */
+  createBy		 Long
+  createTime	 Instant
+  updateby		 Long
+  updateTime	 Instant
+  version		 Integer
+  status		 Integer  /** 状态 */
+}
+relationship ManyToOne {
+	Order{goods} to Goods
+}
+service  Order with serviceClass
+service  Order with serviceImpl
+paginate Order with pager
+
+

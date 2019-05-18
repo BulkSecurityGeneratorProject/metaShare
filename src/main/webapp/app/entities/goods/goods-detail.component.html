@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="goods">
+            <h2><span>Goods</span> {{goods.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span ngbTooltip="商品名称ID">Goods Id</span></dt>
+                <dd>
+                    <span>{{goods.goodsId}}</span>
+                </dd>
+                <dt><span ngbTooltip="商品名称">Name</span></dt>
+                <dd>
+                    <span>{{goods.name}}</span>
+                </dd>
+                <dt><span ngbTooltip="区域编码">Province Code</span></dt>
+                <dd>
+                    <span>{{goods.provinceCode}}</span>
+                </dd>
+                <dt><span ngbTooltip="税率">Rate</span></dt>
+                <dd>
+                    <span>{{goods.rate}}</span>
+                </dd>
+                <dt><span ngbTooltip="状态">Status</span></dt>
+                <dd>
+                    <span>{{goods.status}}</span>
+                </dd>
+                <dt><span ngbTooltip="库存">Stack</span></dt>
+                <dd>
+                    <span>{{goods.stack}}</span>
+                </dd>
+                <dt><span ngbTooltip="单价">Price</span></dt>
+                <dd>
+                    <span>{{goods.price}}</span>
+                </dd>
+                <dt><span>Tax</span></dt>
+                <dd>
+                    <div *ngIf="goods.tax">
+                        <a [routerLink]="['/tax', goods.tax?.id, 'view']">{{goods.tax?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/goods', goods.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
